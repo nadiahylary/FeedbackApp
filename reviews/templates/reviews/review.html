@@ -1,14 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Review</title>
+    <link rel="stylesheet" href="{% static "reviews/index.css" %}">
 </head>
 <body>
     <form action="/" method="post">
         {% csrf_token %}
+        {% for attribute in form %}
+            <div class="form-control {% if attribute.errors %}errors{% endif %}">
+                {{ attribute.label_tag }}
+                {{ attribute }}
+                {{ attribute.errors }}
+            </div>
+        {% endfor %}
+        {% comment %}{% if has_error %}
+            <h3>This Form has some errors!</h3><p>Please fill the fields.</p>
+        {% endif %}
         <label for="username">Name</label>
-        <input id="username" name="username" type="text">
+        <input id="username" name="username" type="text">{% endcomment %}
+        {% comment %}<div class="form-control {% if form.user_name.errors %}errors{% endif %}">
+            {{ form.user_name.label_tag }}
+            {{ form.user_name }}
+            {{ form.user_name.errors }}
+        </div>
+        <div class="form-control {% if form.review.errors %}errors{% endif %}">
+            {{ form.review.label_tag }}
+            {{ form.review }}
+            {{ form.review.errors }}
+        </div>
+        <div class="form-control {% if form.rating.errors %}errors{% endif %}">
+            {{ form.rating.label_tag }}
+            {{ form.rating }}
+            {{ form.rating.errors }}
+        </div>{% endcomment %}
         <button>SEND</button>
     </form>
 </body>
