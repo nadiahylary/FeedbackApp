@@ -19,11 +19,16 @@ def review(request):
     #     "has_error": True
     # })
     if request.method == 'POST':
+        # To update an existing review record:
+        # existing_review = Review.objects.get(id=1)
+        # form = ReviewForm(request.POST, instance=existing_review)
+        # To create a new review record:
         form = ReviewForm(request.POST)
         if form.is_valid():
-            saved_review = Review(username=form.cleaned_data['user_name'], review=form.cleaned_data['review'],
-                                  rating=form.cleaned_data['rating'])
-            saved_review.save()
+            form.save()  # using the ModelForm
+            # saved_review = Review(username=form.cleaned_data['user_name'], review=form.cleaned_data['review'],
+            #                       rating=form.cleaned_data['rating'])
+            # saved_review.save()
             return HttpResponseRedirect("/thanks")
 
     else:
