@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}All Reviews{% endblock %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <h2>{{ review.username|title }}</h2>
+     <h4>Rating: {{ review.rating }}</h4>
+    <p>{{ review.review }}</p>
+
+{% endblock %}

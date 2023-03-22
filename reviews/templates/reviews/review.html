@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+    {% include "includes/header.html" %}
     <form action="/" method="post">
         {% csrf_token %}
         {% for attribute in form %}
