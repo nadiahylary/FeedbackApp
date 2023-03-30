@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Create a Profile</title>
+{% endblock %}
+
+{% block content %}
+    <form action="/profiles/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+{#        <input type="file" name="uploaded"/>#}
+        {{ form }}
+        <button>Upload</button>
+    </form>
+{% endblock %}
