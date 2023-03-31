@@ -6,6 +6,6 @@ from . import views
 
 urlpatterns = [
     path("", views.CreateProfileView.as_view()),
-    path("all", views.ProfileListView.as_view())
+    path("all", views.ProfileListView.as_view()),
 
 ]
