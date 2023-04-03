@@ -143,5 +143,5 @@ class AddFavorite(View):
         review_id = request.POST["review_id"]
         # fav_review = Review.objects.get(pk=review_id)
         request.session["fav_review"] = review_id  # fav_review
-        return HttpResponseRedirect(""+review_id)
+        return HttpResponseRedirect("/reviews/"+review_id)
         
